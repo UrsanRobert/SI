@@ -1,0 +1,35 @@
+#include <DAVE.h>
+
+int main(void)
+{
+int i,j;
+
+
+
+DAVE_Init();
+BUS_IO_Write (&binaryNumber, 0xFF); //sting ledurile
+
+  while(1U)
+  {
+	  if(DIGITAL_IO_GetInput(&BUTTON1)==0)
+	  {
+		  for(i=60;i>=0;i--)
+		  {
+			  BUS_IO_Write(&binaryNumber,i^0xFF);
+			  for (j=0;j<10000000;j++);
+		  }
+
+	  }
+	  if(DIGITAL_IO_GetInput(&BUTTON2)==0)
+	  	  {
+	  		  for(i=30;i>=0;i--)
+	  		  {
+	  			  BUS_IO_Write(&binaryNumber,i^0xFF);
+	  			  for (j=0;j<10000000;j++);
+	  		  }
+
+	  	  }
+
+   }
+return 1;
+}
